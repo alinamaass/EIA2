@@ -1,0 +1,17 @@
+/*
+Aufgabe: Lektion04
+Name: Alina Maaß
+Matrikel: 256216
+Datum: 03.11.2017
+    
+Hiermit versichere ich, dass ich diesen Code selbst geschrieben habe. 
+Er wurde nicht kopiert und auch nicht diktiert.
+*/
+
+body{
+	width:100%;
+}
+
+canvas{
+	max-width: 90%;
+}
