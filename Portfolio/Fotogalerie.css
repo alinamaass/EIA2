@@ -1,0 +1,15 @@
+header div{
+	display: inline;
+	float: right;
+	font-size: 2em;
+	margin: 0.75em 1em 1em auto;
+	text-decoration: underline;
+}
+
+main section:nth-child(2n){
+	clear: left;
+}
+
+main{
+	margin: 0 0 5em 0;
+}
