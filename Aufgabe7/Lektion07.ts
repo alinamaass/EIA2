@@ -45,31 +45,55 @@ namespace StudiVZ {
     }
 
     function saveData(_input: string): string {
-        var student: any = _input.split(',', 6);
-        student[0] = parseInt(student[0]);
-        student[3] = parseInt(student[3]);
-        if (student[4] == "m") { student[4] = false; }
-        if (student[4] == "w") { student[4] = true; }
-        if (isNaN(student[0]) || isNaN(student[3]) || typeof (student[4]) != "boolean") {
-            return "Hoppla! Hier ist etwas schief gelaufen, versuche es noch einmal.";
+        var input: string[] = _input.split(',');
+        let student: StudentData = {
+            matrikel: parseInt(input[0]),
+            name: input[1],
+            vorname: input[2],
+            alter: parseInt(input[3]),
+            geschlecht: parseInt(input[4]) == 0,
+            kommentar: input[5],
+        };
+        students.push(student);
+
+        let geschlecht: string;
+
+        if (parseInt(input[4]) == 0) {
+            geschlecht = "männlich";
         }
         else {
-            students[student[0]] = student;
-            return "Deine Daten wurden gespeichert.";
+            geschlecht = "weiblich";
         }
+
+        return "Deine Daten wurden gespeichert.";
+
+        /* if (isNaN(student.matrikel) || isNaN(student.alter) || typeof (student.geschlecht) != "boolean") {
+             return "Hoppla! Hier ist etwas schief gelaufen, versuche es noch einmal.";
+         }
+         else {
+             return "Deine Daten wurden gespeichert.";
+         }*/
     }
+
+
+
     function queryData(_matrikel: number): string {
-        
-        if (typeof students[_matrikel] !== 'undefined') {
-            return `Das sind deine Daten:
-        \n
-        \nMatrikelnummer: ${students[_matrikel][0]}
-        \nName: ${students[_matrikel][1]}
-        \nVorname: ${students[_matrikel][2]}
-        \nAlter: ${students[_matrikel][3]}
-        \nGeschlecht: ${students[_matrikel][4] === true ? "Weiblich" : "Männlich"}
-        \nKommentar:${students[_matrikel][5]}`
+
+        for (let i: number = 0; i < students.length; i++) {
+            if (students[i].matrikel == _matrikel) {
+                let geschlecht: string = students[i].geschlecht ? "weiblich" : "männlich";
+                return "Das sind deine Daten: " + students[i].matrikel + "\nName: " + students[i].name + "\nVorname: " + students[i].vorname + "\nAlter: " + students[i].alter + "\nGeschlecht: " + geschlecht + "\nKommentar: " + students[i].kommentar;
+            }
+            else { 
+                return "Deine Daten sind nicht in der Datenbank gespeichert." 
+            }
         }
-        else { return "Deine Daten sind nicht in der Datenbank gespeichert." }
     }
-}
+    
+    
+    
+    }
+    
+    
+    
+    
