@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html>
+<!-- 
+Aufgabe: Semesteraufgabe
+Name: Alina Maaß
+Matrikel: 256216
+Datum: XX.07.2017
+Hiermit versichere ich, dass ich diesen
+Code selbst geschrieben habe. Er wurde
+nicht kopiert und auch nicht diktiert.
+-->
+<head>
+
+<!-- **************Schriftarten************** -->
+<link href="https://fonts.googleapis.com/css?family=Roboto:300"
+	rel="stylesheet">
+
+
+
+<!-- ********Bild oben im Tab ********* -->
+<link href="img/icons/Logo.png" rel="shortcut icon">
+
+
+<!-- *********Metadaten*********** -->
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="utf-8">
+<meta name="description"
+	content="Hi! Ich bin Alina. Erfahre mehr...">
+<meta name="keywords" lang="de"
+	content="Portfolio, Alina Maass, Alina Maaß, Grafikdesign, Medienkonzeption, Fotografie, Fotos, Mediengestalter, Mediengestaltung">
+<meta name="author" content="Alina Maaß">
+<meta name="date" content="19-07-2017">
+<meta name="robots" content="index,follow">
+<title>Alina Maaß</title>
+<link rel="stylesheet" type="text/css" href="Abschlussaufgabe.css">
+<script src="Abschlussaufgabe.js"></script>
+</head>
+
+
+
+<body>
+
+
+
+
+
+
+
+
+
+<!-- ***************HEADER******************** -->
+	<header>
+		<a href="#Start"><img src="img/icons/Logo.png" alt="Logo"> </a>
+		<img src="img/icons/HamburgerThin.png" alt="hamburger" id="onclick">
+		<br><br><br><br>
+		<nav id="dropdown">
+			<ul id="list">
+				<a href="#Fotos"><li>Fotos</li></a>
+				<a href="#Videos"><li>Videos</li></a>
+				<a href="#Praktika"><li>Praktika</li></a>
+				<a href="#Über mich"><li>Über mich</li></a>
+				<a href="#Kontakt"><li>Kontakt</li></a>
+			</ul>
+		</nav>
+		<nav id="headerLeiste">
+			<ul>
+				<li><a href="#Fotos">Fotos</a></li>
+				<li><a href="#Videos">Videos</a></li>
+				<li><a href="#Praktika">Praktika</a></li>
+				<li><a href="#Über mich">Über mich</a></li>
+				<li><a href="#Kontakt">Kontakt</a></li>
+			</ul>
+		</nav>
+	</header>
+	<div>
+		<!-- Titelbild mit Logo -->
+		<a name="Start"></a><img src="img/pics/vomDomS.jpg"
+		id="titelbildSmartphone"> <img src="img/pics/vomDom.jpg"
+		id="titelbildDesktop">
+	</div>
+
+
+
+
+
+
+
+
+
+
+<!-- ***************MAIN******************** -->
+	<main>
+		<h1>Alina Maaß</h1>
+		<hr>
+		<div>
+			Willkommen auf meiner Webseite! Ich bin Alina Maaß und studiere Medienkonzeption an der Hochschule Furtwangen University.
+		</div>
+
+	<section id="picOverview">
+		<a name="Fotos"></a>
+		<div>
+			<h2>FOTOS</h2>
+		</div>
+	</section>
+	
+	<section>
+		<div id="zurBildergalerie">
+			<a href="Fotogalerie.html">
+				Hier geht's zur Bildergalerie
+			</a>
+		</div>
+	</section>
+
+	<section id="abstandVideos">
+		<a name="Videos"></a>
+		<div>
+			<h2>VIDEOS</h2>
+		</div>
+		<article>
+			<div class="container">
+				<img src="img/pics/Platzhalter.jpg" class="pic">
+				<div class="overlay">
+					<div class="text">Semesterarbeit 2017/18 – Inhalt folgt</div>
+				</div>
+			</div>
+			<div class="container">
+				<img src="img/pics/Platzhalter.jpg" class="pic">
+				<div class="overlay">
+					<div class="text">Inhalt folgt</div>
+				</div>
+			</div>
+		</article>
+	</section>
+	
+	<section id="praktika">
+		<a name="Praktika"></a>
+		<div>
+			<h2>PRAKTIKA</h2>
+		</div>
+		<article>
+			<div class="containerBig">
+				<img src="img/pics/medienkraftwerk.jpg" class="bigO">
+				<div class="overlayBig">
+					<div class="text">
+						<div>Medienkraftwerk Euskirchen</div>
+						<hr>
+						<div>Mein erstes Praktikum habe ich bei der medienkraftwerk GmbH absolviert. 
+						Hier machte ich ersten Erfahrungen mit den Adobe Programmen InDesign, Illustrator und Photoshop und konnte einen 
+						Einblick in die Organisation und Arbeitsweisen der Grafik Abteilung gewinnen.</div>
+					</div>
+				</div>
+				
+				<div class="showSmartphone">
+					<div>Medienkraftwerk Euskirchen</div>
+					<hr>
+					<div>Mein erstes Praktikum habe ich bei der medienkraftwerk GmbH absolviert. 
+						Hier machte ich ersten Erfahrungen mit den Adobe Programmen InDesign, Illustrator und Photoshop und konnte einen 
+						Einblick in die Organisation und Arbeitsweisen der Grafik Abteilung gewinnen.</div>
+				</div>
+			</div>
+		</article>
+		
+		<article>
+			<div class="containerBig">
+				<img src="img/pics/LancomSystems.jpg" class="bigO">
+				<div class="overlayBig">
+					<div class="text">
+						<div>LANCOM Systems Würselen</div>
+						<hr>
+						<div>Seit April 2014 bin ich zeitweise als Aushilfe 
+						in der Marketing Abteilung bei LANCOM Systems GmbH in 
+						Würselen tätig. Ich erhielt den Einblick in den betrieblichen Ablauf 
+						des Corporate Marketings. Ich habe den Umgang mit typo3 erlernt, war 
+						Redakteurin beim Relaunch der Webseite im September 2016 
+						(<a href="https://www.lancom-systems.de" target="_blank">www.lancom-systems.de</a>)
+						 und war für die laufende Pflege der SEO-Maßnahmen zuständig.</div>
+					</div>
+				</div>
+				<div class="showSmartphone">
+					<div>LANCOM Systems Würselen</div>
+					<hr>
+					<div>Seit April 2014 bin ich zeitweise als Aushilfe 
+						in der Marketing Abteilung bei LANCOM Systems GmbH in 
+						Würselen tätig. Ich erhielt den Einblick in den betrieblichen Ablauf 
+						des Corporate Marketings. Ich habe den Umgang mit typo3 erlernt, war 
+						Redakteurin beim Relaunch der Webseite im September 2016 
+						(<a href="https://www.lancom-systems.de" target="_blank">www.lancom-systems.de</a>)
+						 und war für die laufende Pflege der SEO-Maßnahmen zuständig.</div>
+					</div>
+			</div>
+		</article>
+		<article>
+			<div class="containerBig">
+				<img src="img/pics/IMG_1748.JPG" class="bigO">
+				<div class="overlayBig">
+					<div class="text">
+						<div>Anna Wawra Fotografie Aachen</div>
+						<hr>
+						<div>Von September bis November 2016 war ich 
+						Assistentin bei Anna Wawra People-Fotografie in Aachen. 
+						Ich erweiterte meine Kenntnisse mit Photoshop und lernte 
+						Adobe Lightroom kennen. Außerdem war ich für den Lichtaufbau 
+						im Studio, die Ausleuchtung bei Outdoorshootings, die Kundenbetreuung
+						 zur Nachbearbeitung und Backoffice zuständig. Von Oktober 2016 bis März 
+						 2017 war ich das Gesicht im Schaufenster des Studios.</div>
+					</div>
+				</div>
+				<div class="showSmartphone">
+					<div>Anna Wawra Fotografie Aachen</div>
+					<hr>
+					<div>Von September bis November 2016 war ich 
+						Assistentin bei Anna Wawra People-Fotografie in Aachen. 
+						Ich erweiterte meine Kenntnisse mit Photoshop und lernte 
+						Adobe Lightroom kennen. Außerdem war ich für den Lichtaufbau 
+						im Studio, die Ausleuchtung bei Outdoorshootings, die Kundenbetreuung
+						 zur Nachbearbeitung und Backoffice zuständig. Von Oktober 2016 bis März 
+						 2017 war ich das Gesicht im Schaufenster des Studios.</div>
+					</div>
+			</div>
+		</article>
+	</section>
+	
+	<section>
+		<a name="Über mich"></a>
+		<div>
+			<h2>ÜBER MICH</h2>
+		</div>
+		<article>
+			<div class="containerBig">
+				<img src="img/pics/a IMG_1975.jpg" class="bigO">
+				<div class="overlayBig">
+					<div class="text">
+						<div>Alina Maaß</div>
+						<hr>
+						<div>Ich bin Alina Maaß, 18 Jahre alt und komme 
+						aus Köln. Meine Hobbies sind Zeichnen, Fotografieren,
+						 Schwimmen, und ab und zu beim Basketball mal ein paar Körbe werfen.</div>
+						 <div>Schulabschluss: Allgemeine Hochschulreife, Leistungsfächer: Mathematik und Kunst</div>
+						 <div>Meine Sprachen: Deutsch, Englisch, Französisch (ausgezeichnet durch DELF A1, A2, B1)</div>
+					</div>
+				</div>
+				
+				<div class="showSmartphone">
+					<div>Alina Maaß</div>
+					<hr>
+					<div>Ich bin Alina Maaß, 18 Jahre alt und komme 
+						aus Köln. Meine Hobbies sind Zeichnen, Fotografieren,
+						 Schwimmen, und ab und zu beim Basketball mal ein paar Körbe werfen.</div>
+						 <div>Schulabschluss: Allgemeine Hochschulreife, Leistungsfächer: Mathematik und Kunst</div>
+						 <div>Meine Sprachen: Deutsch, Englisch, Französisch (ausgezeichnet durch DELF A1, A2, B1)</div>
+					</div>
+			</div>
+			</article>
+	</section>
+
+	</main>
+
+
+
+
+
+
+
+
+	<footer>
+		<section>
+			<article>
+				<a name="Kontakt"></a>
+				<iframe
+					src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d682764.3939128747!2d7.647275700505982!3d48.051402965036225!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4790e91c3a5e27d3%3A0xd3449bb77513e5e4!2sHochschule+Furtwangen!5e0!3m2!1sde!2sde!4v1499436480170"
+					width="100%" height="350" margin="0" frameborder="0"
+					style="border: 0" allowfullscreen></iframe>
+
+			</article>
+		</section>
+		<div>
+			<h2>KONTAKT</h2>
+			<a href="https://goo.gl/maps/i1YweWBcgbE2" target="_blank">
+				<ul>
+					<li class="kontakt">Privat:</li>
+					<li class="kontakt">Alina Maaß</li>
+					<li class="kontakt">Rhönstraße 1</li>
+					<li class="kontakt">52355 Düren</li>
+				</ul>
+			</a>
+		</div>
+		<br>
+		<div>
+			<a href="https://goo.gl/maps/yddT4rPdXE82" target="_blank">
+				<ul>
+					<li class="kontakt">Hochschule:</li>
+					<li class="kontakt">Hochschule Furtwangen</li>
+					<li class="kontakt">Robert-Gerwig-Platz 1</li>
+					<li class="kontakt">78120 Furtwangen</li>
+				</ul>
+			</a>
+		</div>
+		<section>
+			<ul>
+		
+				<a href="https://www.instagram.com/alinamaass/" target="_blank"><li><img
+						src="img/icons/instaWeiß.png" class="socialMedia"></li></a>
+
+				<a href="https://www.snapchat.com/add/alinamaass" target="_blank"><li><img
+						src="img/icons/snapchatWeiß.png" class="socialMedia"></li></a>
+				<a href="https://www.pinterest.de/alinamaa/" target="_blank"><li><img
+						src="img/icons/pinterestWeiß.png" class="socialMedia"></li></a>
+				<a href="mailto:alina.maass@hs-furtwangen.de"><li><img
+						src="img/icons/mailWeiß.png" class="socialMedia"></li></a>
+			</ul>
+			<div>
+				<a
+					href="http://www.hs-furtwangen.de/studierende/fakultaeten/digitale-medien.html"
+					target="_blank"><img
+					src="img/icons/Hochschule_Furtwangen_HFU_logo.png" id="HFULogo"></a>
+			</div>
+			<div>
+				© Alina Maaß <b>2017</b>
+			</div>
+		</section>
+	</footer>
+
+
+
+
+</body>
+</html>
+
+
+
+
+
