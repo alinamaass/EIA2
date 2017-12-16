@@ -1,20 +1,20 @@
 var Semesterarbeit;
 (function (Semesterarbeit) {
     var bild0 = {
-        imgsrc: "img/pics/IMG_1856.JPG",
-        text: "Anna Wawra, September 2016",
+        imgsrc: "img/pics/schneefuwa.jpg",
+        text: "Furtwangen im Schwarzwald, November 2017",
     };
     var bild1 = {
-        imgsrc: "img/pics/r IMG_6834.jpg",
-        text: "Robin Maaß, Juni 2017",
+        imgsrc: "img/pics/brend.jpg",
+        text: "Brend im Schwarzwald, Dezember 2017",
     };
     var bild2 = {
-        imgsrc: "img/pics/IMG_1899.JPG",
-        text: "Zrmanja Wasserfälle Kroatien, Oktober 2014",
+        imgsrc: "img/pics/blumen.jpg",
+        text: "2017",
     };
     var bild3 = {
-        imgsrc: "img/pics/IMG_6214.JPG",
-        text: "Robin Maaß – TuS Zülpich, Oktober 2016",
+        imgsrc: "img/pics/london4.jpg",
+        text: "London, September 2017",
     };
     //Bilder im Array:
     var bilderGalerie = [bild0, bild1, bild2, bild3];
