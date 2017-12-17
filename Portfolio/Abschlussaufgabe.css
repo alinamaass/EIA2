@@ -107,6 +107,7 @@ h2{
 	font-size: 2em;
 	text-align: center;
 	margin: 0 0 0 0;
+	float: clear;
 }
 
 
@@ -119,6 +120,9 @@ main section{
 	margin: 5em 0 15em 0;
 }
 
+#abstandsection{
+	margin: 0 0 10em 0;
+}
 
 .hidden{
 	display: none;
@@ -159,6 +163,7 @@ main section{
 	font-size: 1.25em;
 	text-align: center;
 	color: black;
+	float: clear;
 }
 
 section article{
@@ -174,6 +179,29 @@ section article{
 	width: 92%;
 }
 
+#downloads{
+	margin-left: 5%;
+	margin-right:5%;
+	line-height: 1.5em;
+	font-size: 1.25em;
+}
+
+#downloads li{
+	margin: 1em 0 1em 0;
+	list-style-type: none;
+}
+
+#downloads a{
+	text-decoration: none;
+	color: black;
+}
+
+#downloadicon{
+	max-height: 1.75em;
+	position: relative;
+	top: 0.4em;
+	margin-right: 0.5em;
+}
 
 
 footer{
@@ -274,6 +302,7 @@ header{
 	box-shadow: 0 1px 10px black;
 	border-radius: 1em;
 }
+
 #abstandVideos{
 	margin-bottom: 20em;
 }
@@ -288,11 +317,10 @@ footer{
 
 @media screen and (min-width: 48em){ 
 /*Tablet (querformat)
-/* */ */
-/* header:after{ */
-/* 	content: "Mode: Tablet querformat"; */
-/* } */
 
+header:after{
+content: "Mode: Tablet querformat";
+}  */  
 
 
 
@@ -303,7 +331,6 @@ footer{
 
 
 .container {
-  	position: relative;
 	width: 46%;
 	margin: 2%;
 	float: left;
@@ -316,7 +343,6 @@ footer{
 .pic {
   	display: block;
   	width: 100%;
-  	height: auto;
 }
 
 .overlay {
@@ -329,12 +355,12 @@ footer{
   	height: 100%;
   	width: 100%;
   	opacity: 0;
-  	transition: .5s ease;
+  	transition: .8s ease;
   	background-color: #5A5A5A;
 }
 
 .container:hover .overlay {
-	opacity: 0.9;
+	opacity: 0.8;
 }
 
 .text {
@@ -351,8 +377,6 @@ footer{
 }
 
 
-
-
 }
 
 
@@ -364,10 +388,10 @@ footer{
 
 @media screen and (min-width: 64em){
  /*Desktop
-/* */ */
-/* header:after{ */
-/* 	content: "Mode: Desktop"; */
-/* } */
+
+header:after{
+content: "Mode: Desktop";
+}*/ 
 
 
 .container{
@@ -444,6 +468,11 @@ img[alt="mehrBilder"], img[alt="mehrVideos"]{
 
 #abstandVideos{
 	margin-top: 10em;
+}
+
+#abstandsection{
+	margin-left: 20%;
+	margin-right: 20%;
 }
 
 #praktika{
