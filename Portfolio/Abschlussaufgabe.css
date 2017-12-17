@@ -99,8 +99,8 @@ header div{
 main>div{
 	text-align: center;
 	font-size: 1.5em;
-	margin: 1em;
-	/*margin: 1em 2em 1em 2em;*/
+	margin: 1em 1em 5em 1em;
+	
 }
 
 h2{
@@ -141,6 +141,10 @@ main section{
 	width:100%;
 }
 
+#praktika{
+	margin-top: 10em;
+	margin-bottom: 10em;
+}
 
 .container:nth-child(2n+1){
 	clear: left;
@@ -315,12 +319,7 @@ footer{
 
 
 
-@media screen and (min-width: 48em){ 
-/*Tablet (querformat)
-
-header:after{
-content: "Mode: Tablet querformat";
-}  */  
+@media screen and (min-width: 48em){
 
 
 
@@ -475,10 +474,7 @@ img[alt="mehrBilder"], img[alt="mehrVideos"]{
 	margin-right: 20%;
 }
 
-#praktika{
-	margin-top: 25em;
-	margin-bottom: 10em;
-}
+
 
 .bigO {
   	display: block;
