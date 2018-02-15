@@ -1,0 +1,24 @@
+/*
+Aufgabe: Abschlussaufgabe
+Name: Alina Maaß
+Matrikel: 256216
+Datum: 15.02.2018
+	
+Hiermit versichere ich, dass ich diesen Code selbst geschrieben habe. 
+Er wurde nicht kopiert und auch nicht diktiert.
+*/
+
+body{
+	width:100%;
+	margin: 0;
+}
+
+canvas{
+	max-width: 90%;
+	margin-left: 2%;
+}
+
+
+div {
+	position: absolute;
+}
