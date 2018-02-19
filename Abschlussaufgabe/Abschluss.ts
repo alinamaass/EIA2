@@ -12,8 +12,11 @@ namespace Abschlussaufgabe {
 
     export let crc2: CanvasRenderingContext2D;
     window.addEventListener("load", init);
+
     let objects: RedCircle[] = [];
     let darkObjects: BlackCircle[] = [];
+    let confetti: ConfettiInfo[] = [];
+
     let imgData: ImageData;
     let points: number = 0;
     var timeoutToken: any;
@@ -34,19 +37,19 @@ namespace Abschlussaufgabe {
         crc2.fillStyle = "#FDFDE6";
         crc2.fillRect(0, 0, 800, 600);
 
-  
+
         //Hintergrund speichern
         imgData = crc2.getImageData(0, 0, canvas.width, canvas.height);
 
         //Schleife für Animation
         //Red Circle
-        for (let i: number = 0; i < 5; i++) {
+        for (let i: number = 0; i < 8; i++) {
             let s: RedCircle = new RedCircle(Math.random() * 700 + 50, Math.random() * 500 + 50);
             objects.push(s);
         }
 
         //Black Circle
-        for (let i: number = 0; i < 5; i++) {
+        for (let i: number = 0; i < 12; i++) {
             let r: BlackCircle = new BlackCircle(Math.random() * 640 + 80, Math.random() * 440 + 80);
             darkObjects.push(r);
             console.log("black");
@@ -61,28 +64,29 @@ namespace Abschlussaufgabe {
 
         for (let i: number = 0; i < objects.length; i++) {
             console.log(_event.pageX, _event.pageY);
-            if (_event.pageX > objects[i].x - 70 && _event.pageX < objects[i].x + 70 && objects[i].y - 70 < _event.pageY && _event.pageY < objects[i].y + 70) {
+            // if (_event.pageX > objects[i].x - 70 && _event.pageX < objects[i].x + 70 && objects[i].y - 70 < _event.pageY && _event.pageY < objects[i].y + 70) {
 
+            if (_event.pageX >= objects[i].x && _event.pageX <= objects[i].x + 100 && objects[i].y <= _event.pageY && _event.pageY <= objects[i].y + 100) {
                 objects[i].color = "#68FA7E";
                 greencounter += 1;
                 console.log(greencounter);
-                console.log("grün!!");
                 points += 10;
-                objects[i].dx = objects[i].dx / 2;
-                objects[i].dy = objects[i].dy / 2;
+                objects[i].dx = objects[i].dx / 1.25;
+                objects[i].dy = objects[i].dy / 1.25;
             }
-            else if (_event.pageX > darkObjects[i].x - 40 && _event.pageX < darkObjects[i].x + 40 && darkObjects[i].y - 40 < _event.pageY && _event.pageY < darkObjects[i].y + 40) {
+            else if ((darkObjects[i].x - 60 < _event.pageX) && (_event.pageX < darkObjects[i].x + 60) && (darkObjects[i].y - 60 < _event.pageY) && (_event.pageY < darkObjects[i].y + 60)) {
                 for (let e: number = 0; e < objects.length; e++) {
-                    objects[e].dx = objects[e].dx * 1.5;
-                    objects[e].dy = objects[e].dy * 1.5;
+                    darkObjects[i].color = "#DF0101";
+                    objects[e].dx = objects[e].dx * 1.25;
+                    objects[e].dy = objects[e].dy * 1.25;
 
                 }
-                points -= 20;
+                points -= 15;
             }
         }
 
         let div: HTMLDivElement = <HTMLDivElement>document.getElementById("zusammenfassung");
-        div.style.fontSize = "5em";
+        div.style.fontSize = "3em";
         div.innerText = "";
         div.innerText += "Punkte: ";
         div.innerText += " ";
@@ -90,7 +94,7 @@ namespace Abschlussaufgabe {
         div.style.margin = "2%";
 
 
-        if (points < 0) {
+        if (points < -50) {
             window.clearTimeout(timeoutToken);
             crc2.fillStyle = "#FF0000";
             crc2.fillRect(0, 0, 1200, 800);
@@ -105,6 +109,7 @@ namespace Abschlussaufgabe {
 
         if (greencounter == objects.length) {
             window.clearTimeout(timeoutToken);
+            crc2.clearRect(0, 0, 800, 600);
             crc2.fillStyle = "#68FA7E";
             crc2.fillRect(0, 0, 1200, 800);
             crc2.fillStyle = "black";
@@ -112,11 +117,31 @@ namespace Abschlussaufgabe {
             crc2.fillText("Congrats, Champ!", 200, 250);
 
 
+            imgData = crc2.getImageData(0, 0, 800, 600);
 
+            //Schneeflocken
+            for (let i: number = 0; i < 300; i++) {
+                confetti[i] = new ConfettiInfo(Math.random() * 800, Math.random() * 600, "hsl(" + Math.random() * 360 + ", 100%, 50%)");
+            }
+
+            animateConfetti();
 
         }
     }
 
+
+
+
+    function animateConfetti(): void {
+        crc2.putImageData(imgData, 0, 0);//Hintergrund neu aufbauen
+
+        //Schneeflocken
+        for (let i: number = 0; i < confetti.length; i++) {
+            confetti[i].update();
+        }
+        window.setTimeout(animateConfetti, 20);
+        //animate wird alle 15 ms wiederholt
+    }
 
 
 
@@ -131,13 +156,13 @@ namespace Abschlussaufgabe {
         }
 
         //Black Objects
-        for (let i: number = 0; i < objects.length; i++) {
+        for (let i: number = 0; i < darkObjects.length; i++) {
             let r: BlackCircle = darkObjects[i];
             r.update();
+
         }
 
         timeoutToken = window.setTimeout(animate, 15);
-
         //animate wird alle 15 ms wiederholt
 
 

@@ -1,3 +1,12 @@
+/*
+Aufgabe: Lektion08
+Name: Alina Maaß
+Matrikel: 256216
+Datum: 08.12.2017
+    
+Hiermit versichere ich, dass ich diesen Code selbst geschrieben habe.
+Er wurde nicht kopiert und auch nicht diktiert.
+*/
 var Abschlussaufgabe;
 (function (Abschlussaufgabe) {
     class RedCircle extends Abschlussaufgabe.MovingCircle {

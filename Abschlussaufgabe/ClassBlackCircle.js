@@ -1,3 +1,12 @@
+/*
+Aufgabe: Lektion08
+Name: Alina Maaß
+Matrikel: 256216
+Datum: 08.12.2017
+    
+Hiermit versichere ich, dass ich diesen Code selbst geschrieben habe.
+Er wurde nicht kopiert und auch nicht diktiert.
+*/
 var Abschlussaufgabe;
 (function (Abschlussaufgabe) {
     class BlackCircle extends Abschlussaufgabe.MovingCircle {
@@ -18,9 +27,40 @@ var Abschlussaufgabe;
             this.y += this.dy;
         }
         draw() {
+            //schwarzen Kreis erzeigen
             Abschlussaufgabe.crc2.beginPath();
             Abschlussaufgabe.crc2.arc(this.x, this.y, 60, 0, 2 * Math.PI);
             Abschlussaufgabe.crc2.fillStyle = this.color;
+            Abschlussaufgabe.crc2.fill();
+            //Weiß: Augen und Mund
+            Abschlussaufgabe.crc2.beginPath();
+            Abschlussaufgabe.crc2.moveTo(this.x - 45, this.y - 10);
+            Abschlussaufgabe.crc2.lineTo(this.x - 5, this.y + 5);
+            Abschlussaufgabe.crc2.lineTo(this.x - 20, this.y + 15);
+            Abschlussaufgabe.crc2.stroke();
+            Abschlussaufgabe.crc2.fillStyle = "#ffffff";
+            Abschlussaufgabe.crc2.fill();
+            Abschlussaufgabe.crc2.beginPath();
+            Abschlussaufgabe.crc2.moveTo(this.x + 45, this.y - 10);
+            Abschlussaufgabe.crc2.lineTo(this.x + 5, this.y + 5);
+            Abschlussaufgabe.crc2.lineTo(this.x + 20, this.y + 15);
+            Abschlussaufgabe.crc2.stroke();
+            Abschlussaufgabe.crc2.fill();
+            Abschlussaufgabe.crc2.beginPath();
+            Abschlussaufgabe.crc2.moveTo(this.x, this.y + 30);
+            Abschlussaufgabe.crc2.lineTo(this.x + 20, this.y + 40);
+            Abschlussaufgabe.crc2.lineTo(this.x - 20, this.y + 40);
+            Abschlussaufgabe.crc2.stroke();
+            Abschlussaufgabe.crc2.fill();
+            //Schwarz: Kreise in Augen
+            Abschlussaufgabe.crc2.beginPath();
+            Abschlussaufgabe.crc2.arc(this.x - 20, this.y + 5, 4, 0, 2 * Math.PI);
+            Abschlussaufgabe.crc2.stroke();
+            Abschlussaufgabe.crc2.fillStyle = "#000000";
+            Abschlussaufgabe.crc2.fill();
+            Abschlussaufgabe.crc2.beginPath();
+            Abschlussaufgabe.crc2.arc(this.x + 20, this.y + 5, 4, 0, 2 * Math.PI);
+            Abschlussaufgabe.crc2.stroke();
             Abschlussaufgabe.crc2.fill();
         }
     }
