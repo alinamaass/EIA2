@@ -8,6 +8,18 @@ Hiermit versichere ich, dass ich diesen Code selbst geschrieben habe.
 Er wurde nicht kopiert und auch nicht diktiert.
 */
 
+@font-face { 
+	font-family: 'Shree714';
+    src: url('schrift/Shree714.ttc'); }
+
+@font-face { 
+	font-family: 'SourceSansPro-ExtraLight.otf';
+    src: url('schrift/SourceSansPro-ExtraLight.otf'); }
+
+html{
+	font-family: 'SourceSansPro-ExtraLight.otf', 'Shree714', sans-serif;
+}
+
 body{
 	width:100%;
 	margin: 0;

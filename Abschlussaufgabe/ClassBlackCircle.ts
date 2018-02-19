@@ -15,10 +15,10 @@ namespace Abschlussaufgabe {
 
 
         move(): void {
-            if (this.y > 720 || this.y < 80) {
+            if (this.y > 540 || this.y < 60) {
                 this.dy -= this.dy * 2;
             }
-            if (this.x > 1120 || this.x < 80) {
+            if (this.x > 740 || this.x < 60) {
                 this.dx -= this.dx * 2;
             }
             this.x += this.dx;
@@ -28,7 +28,7 @@ namespace Abschlussaufgabe {
 
         draw(): void {
             crc2.beginPath();
-            crc2.arc(this.x, this.y, 80, 0, 2 * Math.PI);
+            crc2.arc(this.x, this.y, 60, 0, 2 * Math.PI);
             crc2.fillStyle = this.color;
             crc2.fill();
         }

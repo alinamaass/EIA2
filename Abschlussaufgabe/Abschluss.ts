@@ -18,35 +18,36 @@ namespace Abschlussaufgabe {
     let points: number = 0;
     var timeoutToken: any;
     let greencounter: number = 0;
-                console.log(greencounter);
+    console.log(greencounter);
 
 
 
 
     function init(): void {
-        
-        alert("Triff die roten Kreise!\nMeide die schwarzen Kreise.\nViel Spaß!");
+
+        //alert("Triff die roten Kreise!\nMeide die schwarzen Kreise.\nViel Spaß!");
         let canvas: HTMLCanvasElement = document.getElementsByTagName("canvas")[0];
         console.log("Test, start init");
         canvas.addEventListener("click", shootBomb);
         crc2 = canvas.getContext("2d");
 
         crc2.fillStyle = "#FDFDE6";
-        crc2.fillRect(0, 0, 1200, 800);
+        crc2.fillRect(0, 0, 800, 600);
 
+  
         //Hintergrund speichern
         imgData = crc2.getImageData(0, 0, canvas.width, canvas.height);
 
         //Schleife für Animation
         //Red Circle
         for (let i: number = 0; i < 5; i++) {
-            let s: RedCircle = new RedCircle(Math.random() * 1080 + 60, Math.random() * 680 + 60);
+            let s: RedCircle = new RedCircle(Math.random() * 700 + 50, Math.random() * 500 + 50);
             objects.push(s);
         }
 
         //Black Circle
         for (let i: number = 0; i < 5; i++) {
-            let r: BlackCircle = new BlackCircle(Math.random() * 1080 + 60, Math.random() * 680 + 60);
+            let r: BlackCircle = new BlackCircle(Math.random() * 640 + 80, Math.random() * 440 + 80);
             darkObjects.push(r);
             console.log("black");
         }
@@ -60,7 +61,7 @@ namespace Abschlussaufgabe {
 
         for (let i: number = 0; i < objects.length; i++) {
             console.log(_event.pageX, _event.pageY);
-            if (_event.pageX > objects[i].x - 80 && _event.pageX < objects[i].x + 80 && objects[i].y - 80 < _event.pageY && _event.pageY < objects[i].y + 80) {
+            if (_event.pageX > objects[i].x - 70 && _event.pageX < objects[i].x + 70 && objects[i].y - 70 < _event.pageY && _event.pageY < objects[i].y + 70) {
 
                 objects[i].color = "#68FA7E";
                 greencounter += 1;
@@ -70,7 +71,7 @@ namespace Abschlussaufgabe {
                 objects[i].dx = objects[i].dx / 2;
                 objects[i].dy = objects[i].dy / 2;
             }
-            else if (_event.pageX > darkObjects[i].x - 80 && _event.pageX < darkObjects[i].x + 80 && darkObjects[i].y - 80 < _event.pageY && _event.pageY < darkObjects[i].y + 80) {
+            else if (_event.pageX > darkObjects[i].x - 40 && _event.pageX < darkObjects[i].x + 40 && darkObjects[i].y - 40 < _event.pageY && _event.pageY < darkObjects[i].y + 40) {
                 for (let e: number = 0; e < objects.length; e++) {
                     objects[e].dx = objects[e].dx * 1.5;
                     objects[e].dy = objects[e].dy * 1.5;
@@ -84,6 +85,7 @@ namespace Abschlussaufgabe {
         div.style.fontSize = "5em";
         div.innerText = "";
         div.innerText += "Punkte: ";
+        div.innerText += " ";
         div.innerText += points;
         div.style.margin = "2%";
 
@@ -93,21 +95,21 @@ namespace Abschlussaufgabe {
             crc2.fillStyle = "#FF0000";
             crc2.fillRect(0, 0, 1200, 800);
             crc2.fillStyle = "black";
-            crc2.font = "50px Verdana";
-            crc2.fillText("You failed!", 450, 350);
+            crc2.font = "40px Verdana";
+            crc2.fillText("You failed!", 300, 250);
 
             crc2.font = "30px Verdana";
-            crc2.fillText("Lade die Seite neu und versuch's nochmal!", 250, 450);
+            crc2.fillText("Lade die Seite neu und versuch's nochmal!", 100, 300);
 
         }
 
-            if (greencounter == objects.length) {
-                window.clearTimeout(timeoutToken);
-                crc2.fillStyle = "#68FA7E";
-                crc2.fillRect(0, 0, 1200, 800);
-                crc2.fillStyle = "black";
-                crc2.font = "50px Verdana";
-                crc2.fillText("Congrats, Champ!", 400, 350);
+        if (greencounter == objects.length) {
+            window.clearTimeout(timeoutToken);
+            crc2.fillStyle = "#68FA7E";
+            crc2.fillRect(0, 0, 1200, 800);
+            crc2.fillStyle = "black";
+            crc2.font = "40px Verdana";
+            crc2.fillText("Congrats, Champ!", 200, 250);
 
 
 
