@@ -18,7 +18,7 @@ var Abschlussaufgabe;
     let greencounter = 0;
     console.log(greencounter);
     function init() {
-        //alert("Triff die roten Kreise!\nMeide die schwarzen Kreise.\nViel Spaß!");
+        alert("Triff die Basketbälle!\nMeide die schwarzen Kreise.\nViel Spaß!");
         let canvas = document.getElementsByTagName("canvas")[0];
         console.log("Test, start init");
         canvas.addEventListener("click", shootBomb);
