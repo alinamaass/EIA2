@@ -50,24 +50,28 @@ var Abschlussaufgabe;
             //console.log(_event.pageX, _event.pageY);
             if (_event.pageX >= objects[i].x && _event.pageX <= objects[i].x + 100 && objects[i].y <= _event.pageY && _event.pageY <= objects[i].y + 100) {
                 //WENN der Klick im Bereich eines Basketballs liegt
-                objects[i].color = "#68FA7E"; //wird die Farbe zu grün geändert,
-                greencounter += 1; //die Punkte zum Sieg werden hochgezählt
-                console.log("Treffer " + greencounter); //und auf der Konsole ausgegeben.
-                points += 10; //Die Punktzahl wird um 10 erhöht
-                objects[i].dx = objects[i].dx / 1.25; //und die Geschwindigkeit der Basketbälle durch 1.25 geteilt (also etwas verlangsamt)
-                objects[i].dy = objects[i].dy / 1.25;
+                if (objects[i].color != "#68FA7E") {
+                    objects[i].color = "#68FA7E"; //wird die Farbe zu grün geändert,
+                    greencounter += 1; //die Punkte zum Sieg werden hochgezählt
+                    console.log("Treffer " + greencounter); //und auf der Konsole ausgegeben.
+                    points += 10; //Die Punktzahl wird um 10 erhöht
+                    objects[i].dx = objects[i].dx / 1.25; //und die Geschwindigkeit der Basketbälle durch 1.25 geteilt (also etwas verlangsamt)
+                    objects[i].dy = objects[i].dy / 1.25;
+                }
             }
         }
         for (let i = 0; i < darkObjects.length; i++) {
             //console.log(_event.pageX, _event.pageY);
             if (_event.pageX >= darkObjects[i].x && _event.pageX <= darkObjects[i].x + 120 && darkObjects[i].y <= _event.pageY && _event.pageY <= darkObjects[i].y + 120) {
                 //WENN der Klick im Bereich eines schwarzen Balls liegt
-                darkObjects[i].color = "#DF0101"; //wird die Farbe zu rot geändert,
-                blackcounter += 1; //die Treffer auf schwarze Bälle werden hochgezählt
-                console.log("Fehler " + blackcounter); //und auf der Konsole ausgegeben.
-                points -= 15; //Es werden 15 Punkte abgezogen
-                darkObjects[i].dx = darkObjects[i].dx * 1.25; //und ihre Geschwindigkeit mit 1.25 multipliziert (also etwas erhöht).
-                darkObjects[i].dy = darkObjects[i].dy * 1.25;
+                if (darkObjects[i].color != "#DF0101") {
+                    darkObjects[i].color = "#DF0101"; //wird die Farbe zu rot geändert,
+                    blackcounter += 1; //die Treffer auf schwarze Bälle werden hochgezählt
+                    console.log("Fehler " + blackcounter); //und auf der Konsole ausgegeben.
+                    points -= 15; //Es werden 15 Punkte abgezogen
+                    darkObjects[i].dx = darkObjects[i].dx * 1.25; //und ihre Geschwindigkeit mit 1.25 multipliziert (also etwas erhöht).
+                    darkObjects[i].dy = darkObjects[i].dy * 1.25;
+                }
             }
         }
         let div = document.getElementById("zusammenfassung");
@@ -77,10 +81,10 @@ var Abschlussaufgabe;
         div.innerHTML += "Punkte: ";
         div.innerHTML += " ";
         div.innerHTML += points;
-        div.innerHTML += "<br>Fehler: ";
-        div.innerHTML += blackcounter + " von " + erlaubtefehler;
         div.innerHTML += "<br>Treffer: ";
         div.innerHTML += greencounter + " von " + objects.length;
+        div.innerHTML += "<br>Fehler: ";
+        div.innerHTML += blackcounter + " von " + erlaubtefehler;
         if (blackcounter == erlaubtefehler + 1) {
             window.clearTimeout(timeoutToken);
             Abschlussaufgabe.crc2.fillStyle = "#FF0000";
