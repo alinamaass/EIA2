@@ -26,11 +26,18 @@ body{
 }
 
 canvas{
-	max-width: 90%;
+	max-width: 80%;
 	margin-left: 2%;
 }
 
 
 div {
 	position: absolute;
+}
+
+#zusammenfassung{
+	width: 30%;
+	line-height: 1.8em;
+	border: 1px solid grey;
+	float: left;
 }

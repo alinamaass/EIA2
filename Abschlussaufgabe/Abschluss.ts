@@ -21,14 +21,17 @@ namespace Abschlussaufgabe {
     let points: number = 0;
     var timeoutToken: any;
     let greencounter: number = 0;
+    let blackcounter: number = 0;
     console.log(greencounter);
+    console.log(blackcounter);
+    let erlaubtefehler: number = 3;
 
 
 
 
     function init(): void {
 
-        alert("Triff die Basketbälle!\nMeide die schwarzen Kreise.\nViel Spaß!");
+        alert("Triff die Basketbälle, meide die schwarzen Kreise.\nDu darfst dir " + erlaubtefehler + " Fehler erlauben.\nTriffst du alle Basketbälle, gewinnst du das Spiel.\nViel Spaß!");
         let canvas: HTMLCanvasElement = document.getElementsByTagName("canvas")[0];
         console.log("Test, start init");
         canvas.addEventListener("click", shootBomb);
@@ -59,42 +62,53 @@ namespace Abschlussaufgabe {
 
 
 
-    //Kreise per Klick färben
     function shootBomb(_event: MouseEvent): void {
 
+       
+
         for (let i: number = 0; i < objects.length; i++) {
-            console.log(_event.pageX, _event.pageY);
-            // if (_event.pageX > objects[i].x - 70 && _event.pageX < objects[i].x + 70 && objects[i].y - 70 < _event.pageY && _event.pageY < objects[i].y + 70) {
+            //console.log(_event.pageX, _event.pageY);
 
             if (_event.pageX >= objects[i].x && _event.pageX <= objects[i].x + 100 && objects[i].y <= _event.pageY && _event.pageY <= objects[i].y + 100) {
-                objects[i].color = "#68FA7E";
-                greencounter += 1;
-                console.log(greencounter);
-                points += 10;
-                objects[i].dx = objects[i].dx / 1.25;
+                //WENN der Klick im Bereich eines Basketballs liegt
+                objects[i].color = "#68FA7E";//wird die Farbe zu grün geändert,
+                greencounter += 1;//die Punkte zum Sieg werden hochgezählt
+                console.log("Treffer " + greencounter);//und auf der Konsole ausgegeben.
+                points += 10;//Die Punktzahl wird um 10 erhöht
+                objects[i].dx = objects[i].dx / 1.25;//und die Geschwindigkeit der Basketbälle durch 1.25 geteilt (also etwas verlangsamt)
                 objects[i].dy = objects[i].dy / 1.25;
-            }
-            else if ((darkObjects[i].x - 60 < _event.pageX) && (_event.pageX < darkObjects[i].x + 60) && (darkObjects[i].y - 60 < _event.pageY) && (_event.pageY < darkObjects[i].y + 60)) {
-                for (let e: number = 0; e < objects.length; e++) {
-                    darkObjects[i].color = "#DF0101";
-                    objects[e].dx = objects[e].dx * 1.25;
-                    objects[e].dy = objects[e].dy * 1.25;
-
-                }
-                points -= 15;
             }
         }
 
+        for (let i: number = 0; i < darkObjects.length; i++) {
+            //console.log(_event.pageX, _event.pageY);
+
+            if (_event.pageX >= darkObjects[i].x && _event.pageX <= darkObjects[i].x + 120 && darkObjects[i].y <= _event.pageY && _event.pageY <= darkObjects[i].y + 120) {
+                //WENN der Klick im Bereich eines schwarzen Balls liegt
+                darkObjects[i].color = "#DF0101";//wird die Farbe zu rot geändert,
+                blackcounter += 1;//die Treffer auf schwarze Bälle werden hochgezählt
+                console.log("Fehler " + blackcounter);//und auf der Konsole ausgegeben.
+                points -= 15;//Es werden 15 Punkte abgezogen
+                darkObjects[i].dx = darkObjects[i].dx * 1.25;//und ihre Geschwindigkeit mit 1.25 multipliziert (also etwas erhöht).
+                darkObjects[i].dy = darkObjects[i].dy * 1.25;
+            }
+        }
+
+
         let div: HTMLDivElement = <HTMLDivElement>document.getElementById("zusammenfassung");
-        div.style.fontSize = "3em";
-        div.innerText = "";
-        div.innerText += "Punkte: ";
-        div.innerText += " ";
-        div.innerText += points;
+        div.style.padding = "1em";
         div.style.margin = "2%";
+        div.innerHTML = "";
+        div.innerHTML += "Punkte: ";
+        div.innerHTML += " ";
+        div.innerHTML += points;
+        div.innerHTML += "<br>Fehler: ";
+        div.innerHTML += blackcounter + " von " + erlaubtefehler;
+        div.innerHTML += "<br>Treffer: ";
+        div.innerHTML += greencounter + " von " + objects.length;
 
 
-        if (points < -50) {
+        if (blackcounter == erlaubtefehler + 1) {
             window.clearTimeout(timeoutToken);
             crc2.fillStyle = "#FF0000";
             crc2.fillRect(0, 0, 1200, 800);
@@ -115,6 +129,8 @@ namespace Abschlussaufgabe {
             crc2.fillStyle = "black";
             crc2.font = "40px Verdana";
             crc2.fillText("Congrats, Champ!", 200, 250);
+            crc2.font = "30px Verdana";
+            crc2.fillText("Du hast " + points + " Punkte erreicht!", 160, 350);
 
 
             imgData = crc2.getImageData(0, 0, 800, 600);
@@ -146,7 +162,7 @@ namespace Abschlussaufgabe {
 
 
     function animate(): void {
-        console.log("animate");
+        //console.log("animate");
         crc2.putImageData(imgData, 0, 0);//Hintergrund neu aufbauen
 
         //Red Objects
