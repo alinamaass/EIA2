@@ -1,8 +1,8 @@
 /*
-Aufgabe: Lektion08
+Aufgabe: Abschlussaufgabe WS 17/18
 Name: Alina Maaß
 Matrikel: 256216
-Datum: 08.12.2017
+Datum: 22.02.2018
     
 Hiermit versichere ich, dass ich diesen Code selbst geschrieben habe. 
 Er wurde nicht kopiert und auch nicht diktiert.
