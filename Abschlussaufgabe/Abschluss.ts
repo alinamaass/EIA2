@@ -58,6 +58,9 @@ namespace Abschlussaufgabe {
             darkObjects.push(r);
             console.log("black");
         }
+
+
+
         animate();
     }
 
@@ -66,6 +69,7 @@ namespace Abschlussaufgabe {
     function shootBomb(_event: MouseEvent): void {
 
         klickcounter += 1;
+        console.log(klickcounter);
 
         for (let i: number = 0; i < objects.length; i++) {
             //console.log(_event.pageX, _event.pageY);
@@ -73,13 +77,13 @@ namespace Abschlussaufgabe {
             objects[i].dx = objects[i].dx * 1.1;//Die Geschwindigkeit der Basketbälle durch 1.25 geteilt (also etwas verlangsamt)
             objects[i].dy = objects[i].dy * 1.1;
 
+            
             if (_event.pageX >= objects[i].x && _event.pageX <= objects[i].x + 100 && objects[i].y <= _event.pageY && _event.pageY <= objects[i].y + 100 && objects[i].color != "#68FA7E") {
                 //WENN der Klick im Bereich eines Basketballs liegt
                 //UND der Basketball noch nicht grün ist
                 objects[i].color = "#68FA7E";//wird die Farbe zu grün geändert,
                 greencounter += 1;//die Punkte zum Sieg werden hochgezählt
                 console.log("Treffer " + greencounter);//und auf der Konsole ausgegeben.
-                //points += 10;//Die Punktzahl wird um 10 erhöht.
 
             }
         }
@@ -89,17 +93,18 @@ namespace Abschlussaufgabe {
 
             darkObjects[i].dx = darkObjects[i].dx * 1.1;//und ihre Geschwindigkeit mit 1.25 multipliziert (also etwas erhöht).
             darkObjects[i].dy = darkObjects[i].dy * 1.1;
+            
+            
             if (_event.pageX >= darkObjects[i].x && _event.pageX <= darkObjects[i].x + 100 && darkObjects[i].y <= _event.pageY && _event.pageY <= darkObjects[i].y + 100 && darkObjects[i].color != "#DF0101") {
                 //WENN der Klick im Bereich eines schwarzen Balls liegt
                 //UND der Ball noch nicht rot ist
                 darkObjects[i].color = "#DF0101";//wird die Farbe zu rot geändert,
                 blackcounter += 1;//die Treffer auf schwarze Bälle werden hochgezählt
                 console.log("Fehler " + blackcounter);//und auf der Konsole ausgegeben.
-                //points -= 15;//Es werden 15 Punkte abgezogen
             }
         }
 
-
+        //Box füe aktuellen Stand: Treffer, Fehler, Klicks
         let div: HTMLDivElement = <HTMLDivElement>document.getElementById("zusammenfassung");
         div.style.padding = "1em";
         div.style.margin = "2%";
@@ -110,6 +115,21 @@ namespace Abschlussaufgabe {
         div.innerHTML += blackcounter + " von " + erlaubtefehler;
         div.innerHTML += "<br>Klicks: ";
         div.innerHTML += klickcounter;
+
+
+        if (klickcounter == 10) {
+
+            for (let i: number = 0; i < 3; i++) {
+                let s: RedCircle = new RedCircle(Math.random() * 700 + 50, Math.random() * 500 + 50);
+                objects.push(s);
+            }
+
+            for (let i: number = 0; i < 2; i++) {
+                let r: BlackCircle = new BlackCircle(Math.random() * 640 + 80, Math.random() * 440 + 80);
+                darkObjects.push(r);
+                console.log("black");
+            }
+        }
 
 
         if (blackcounter == erlaubtefehler + 1) {
@@ -140,7 +160,7 @@ namespace Abschlussaufgabe {
 
             imgData = crc2.getImageData(0, 0, 800, 600);
 
-            //Schneeflocken
+            //Konfetti erzeugen
             for (let i: number = 0; i < 300; i++) {
                 confetti[i] = new ConfettiInfo(Math.random() * 800, Math.random() * 600, "hsl(" + Math.random() * 360 + ", 100%, 50%)");
             }
@@ -169,8 +189,8 @@ namespace Abschlussaufgabe {
 
         //******Punkte für Klick Anzahl *******
         for (let i: number = 0; i < objects.length; i++) {
-            if (klickcounter == objects.length + i ) {
-                points += 10000 - i*100;
+            if (klickcounter == objects.length + i) {
+                points += 10000 - i * 100;
             }
         }
 
@@ -179,12 +199,12 @@ namespace Abschlussaufgabe {
     function animateConfetti(): void {
         crc2.putImageData(imgData, 0, 0);//Hintergrund neu aufbauen
 
-        //Schneeflocken
+        //Konfetti bewegen
         for (let i: number = 0; i < confetti.length; i++) {
             confetti[i].update();
         }
         window.setTimeout(animateConfetti, 20);
-        //animate wird alle 15 ms wiederholt
+        //animate wird alle 20 ms wiederholt
     }
 
 
@@ -193,7 +213,7 @@ namespace Abschlussaufgabe {
         //console.log("animate");
         crc2.putImageData(imgData, 0, 0);//Hintergrund neu aufbauen
 
-        //Red Objects
+        //Red Objects (Basketbälle)
         for (let i: number = 0; i < objects.length; i++) {
             let s: RedCircle = objects[i];
             s.update();

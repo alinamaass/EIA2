@@ -48,6 +48,7 @@ var Abschlussaufgabe;
     }
     function shootBomb(_event) {
         klickcounter += 1;
+        console.log(klickcounter);
         for (let i = 0; i < objects.length; i++) {
             //console.log(_event.pageX, _event.pageY);
             objects[i].dx = objects[i].dx * 1.1; //Die Geschwindigkeit der Basketbälle durch 1.25 geteilt (also etwas verlangsamt)
@@ -72,6 +73,7 @@ var Abschlussaufgabe;
                 console.log("Fehler " + blackcounter); //und auf der Konsole ausgegeben.
             }
         }
+        //Box füe aktuellen Stand: Treffer, Fehler, Klicks
         let div = document.getElementById("zusammenfassung");
         div.style.padding = "1em";
         div.style.margin = "2%";
@@ -82,6 +84,17 @@ var Abschlussaufgabe;
         div.innerHTML += blackcounter + " von " + erlaubtefehler;
         div.innerHTML += "<br>Klicks: ";
         div.innerHTML += klickcounter;
+        if (klickcounter == 10) {
+            for (let i = 0; i < 3; i++) {
+                let s = new Abschlussaufgabe.RedCircle(Math.random() * 700 + 50, Math.random() * 500 + 50);
+                objects.push(s);
+            }
+            for (let i = 0; i < 2; i++) {
+                let r = new Abschlussaufgabe.BlackCircle(Math.random() * 640 + 80, Math.random() * 440 + 80);
+                darkObjects.push(r);
+                console.log("black");
+            }
+        }
         if (blackcounter == erlaubtefehler + 1) {
             window.clearTimeout(timeoutToken);
             Abschlussaufgabe.crc2.fillStyle = "#FF0000";
@@ -104,7 +117,7 @@ var Abschlussaufgabe;
             Abschlussaufgabe.crc2.font = "30px Verdana";
             Abschlussaufgabe.crc2.fillText("Dein Score: " + points, 250, 350);
             imgData = Abschlussaufgabe.crc2.getImageData(0, 0, 800, 600);
-            //Schneeflocken
+            //Konfetti erzeugen
             for (let i = 0; i < 300; i++) {
                 confetti[i] = new Abschlussaufgabe.ConfettiInfo(Math.random() * 800, Math.random() * 600, "hsl(" + Math.random() * 360 + ", 100%, 50%)");
             }
@@ -134,17 +147,17 @@ var Abschlussaufgabe;
     }
     function animateConfetti() {
         Abschlussaufgabe.crc2.putImageData(imgData, 0, 0); //Hintergrund neu aufbauen
-        //Schneeflocken
+        //Konfetti bewegen
         for (let i = 0; i < confetti.length; i++) {
             confetti[i].update();
         }
         window.setTimeout(animateConfetti, 20);
-        //animate wird alle 15 ms wiederholt
+        //animate wird alle 20 ms wiederholt
     }
     function animate() {
         //console.log("animate");
         Abschlussaufgabe.crc2.putImageData(imgData, 0, 0); //Hintergrund neu aufbauen
-        //Red Objects
+        //Red Objects (Basketbälle)
         for (let i = 0; i < objects.length; i++) {
             let s = objects[i];
             s.update();
